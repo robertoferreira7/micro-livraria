@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+// Definimos o serviço de Pagamento
+service PaymentService {
+    // Função para processar um pagamento
+    rpc ProcessPayment(PaymentRequest) returns (PaymentResponse) {}
+}
+
+// O que a função espera como entrada
+message PaymentRequest {
+    float amount = 1;
+    string card_number = 2;
+    string expiry_date = 3;
+    string cvv = 4;
+}
+
+// O que a função retorna
+message PaymentResponse {
+    bool success = 1;
+    string transaction_id = 2;
+    string message = 3;
+}
